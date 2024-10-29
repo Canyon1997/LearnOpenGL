@@ -1,0 +1,10 @@
+﻿  glad.c
+  main.cpp
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Textures\Textures\main.cpp(110,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Textures\Textures\main.cpp(125,28): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Textures\Textures\main.cpp(133,28): warning C4305: '-=': truncation from 'double' to 'float'
+  OpenGLOperations.cpp
+  Shader.cpp
+  stb_image.cpp
+  Generating Code...
+  Textures.vcxproj -> C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Textures\x64\Debug\Textures.exe

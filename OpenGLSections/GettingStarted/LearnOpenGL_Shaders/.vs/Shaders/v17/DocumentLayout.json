@@ -1,0 +1,226 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\shaders\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:shaders\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\VertexOffsetShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:VertexOffsetShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\FragmentOffsetShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:FragmentOffsetShader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\VertexShader1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:Shaders\\VertexShader1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:Shaders\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\FragmentShader1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:Shaders\\FragmentShader1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\shaders\\OpenGLOperations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:shaders\\OpenGLOperations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\shaders\\glad.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:shaders\\glad.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\shaders\\OpenGLOperations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7EF02E50-0118-46C9-8534-59823CEC6D57}|Shaders.vcxproj|solutionrelative:shaders\\OpenGLOperations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\filesystem||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Canyon\\ProgrammingLibraries\\glfw-3.4\\glfw-3.4\\include\\GLFW\\glfw3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Canyon\\ProgrammingLibraries\\GLAD\\glad\\include\\glad\\glad.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Shaders\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 154,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FragmentOffsetShader.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\FragmentOffsetShader.glsl",
+              "RelativeDocumentMoniker": "FragmentOffsetShader.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\FragmentOffsetShader.glsl",
+              "RelativeToolTip": "FragmentOffsetShader.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-06T22:19:46.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Shader.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.cpp",
+              "RelativeDocumentMoniker": "Shaders\\Shader.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.cpp",
+              "RelativeToolTip": "Shaders\\Shader.cpp",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAAIAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-25T05:44:02.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VertexOffsetShader.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\VertexOffsetShader.glsl",
+              "RelativeDocumentMoniker": "VertexOffsetShader.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\VertexOffsetShader.glsl",
+              "RelativeToolTip": "VertexOffsetShader.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-25T05:30:20.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Shader.h",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.h",
+              "RelativeDocumentMoniker": "Shaders\\Shader.h",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\Shader.h",
+              "RelativeToolTip": "Shaders\\Shader.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-23T00:13:24.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FragmentShader1.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\FragmentShader1.glsl",
+              "RelativeDocumentMoniker": "Shaders\\FragmentShader1.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\FragmentShader1.glsl",
+              "RelativeToolTip": "Shaders\\FragmentShader1.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-22T23:02:26.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VertexShader1.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\VertexShader1.glsl",
+              "RelativeDocumentMoniker": "Shaders\\VertexShader1.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\VertexShader1.glsl",
+              "RelativeToolTip": "Shaders\\VertexShader1.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-22T23:01:05.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "filesystem",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\filesystem",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\filesystem",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\filesystem",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\filesystem",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-22T02:22:28.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\main.cpp",
+              "RelativeDocumentMoniker": "Shaders\\main.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\main.cpp",
+              "RelativeToolTip": "Shaders\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-22T02:13:40.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OpenGLOperations.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\OpenGLOperations.cpp",
+              "RelativeDocumentMoniker": "Shaders\\OpenGLOperations.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\OpenGLOperations.cpp",
+              "RelativeToolTip": "Shaders\\OpenGLOperations.cpp",
+              "ViewState": "AQIAABEAAAAAAAAAAAAqwCIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-22T02:12:57.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "glad.c",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\glad.c",
+              "RelativeDocumentMoniker": "Shaders\\glad.c",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\glad.c",
+              "RelativeToolTip": "Shaders\\glad.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-08-22T02:08:45.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "glfw3.h",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingLibraries\\glfw-3.4\\glfw-3.4\\include\\GLFW\\glfw3.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\ProgrammingLibraries\\glfw-3.4\\glfw-3.4\\include\\GLFW\\glfw3.h",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingLibraries\\glfw-3.4\\glfw-3.4\\include\\GLFW\\glfw3.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\ProgrammingLibraries\\glfw-3.4\\glfw-3.4\\include\\GLFW\\glfw3.h",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-22T02:07:48.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "glad.h",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingLibraries\\GLAD\\glad\\include\\glad\\glad.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\ProgrammingLibraries\\GLAD\\glad\\include\\glad\\glad.h",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingLibraries\\GLAD\\glad\\include\\glad\\glad.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\ProgrammingLibraries\\GLAD\\glad\\include\\glad\\glad.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-22T02:07:44.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OpenGLOperations.h",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\OpenGLOperations.h",
+              "RelativeDocumentMoniker": "Shaders\\OpenGLOperations.h",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\GettingStarted\\LearnOpenGL_Shaders\\Shaders\\OpenGLOperations.h",
+              "RelativeToolTip": "Shaders\\OpenGLOperations.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-22T02:07:42.859Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
