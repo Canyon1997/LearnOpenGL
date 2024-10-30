@@ -19,6 +19,24 @@ int main()
 
 	Shader woodenShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
 
+	// define camera position (OpenGL points in -z direction
+	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+
+	// define where its trying to point at (origin of coordinate space)
+	glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	// get camera direction vector
+	glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
+
+	// get camera right angle by defining a generic up vector (in openGL 'y' is up) and crossing with camera direction vector
+	glm::vec3 upVector = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 cameraRight = glm::normalize(glm::cross(upVector, cameraDirection));
+
+	// define cameras positive y axis by crossing cameras forward direction by its right direction
+	glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
+
+	// TODO: Create a "LookAt" matrix
+
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
