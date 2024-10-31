@@ -13,12 +13,16 @@
 #include "Shader.h"
 #include "stb_image.h"
 
+// TODO: Continue with "Walking Around" section
+
 int main()
 {
 	GLFWwindow* window = InitializeOpenGL("Camera");
 
 	Shader woodenShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
 
+	/* Example of how a camera view matrix is made 
+	* 
 	// define camera position (OpenGL points in -z direction
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 
@@ -35,7 +39,9 @@ int main()
 	// define cameras positive y axis by crossing cameras forward direction by its right direction
 	glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 
-	// TODO: Create a "LookAt" matrix
+	// constructs a camera view matrix from camera vectors above
+	glm::mat4 cameraViewMatrix = glm::lookAt(cameraPos, cameraTarget, upVector);
+	*/
 
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -209,8 +215,11 @@ int main()
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
 			// View Matrix (moves world around for camera view)
-			glm::mat4 viewMatrix = glm::mat4(1.0f);
-			viewMatrix = glm::translate(viewMatrix, glm::vec3(0.0f, 0.0f, -3.0f));
+			const float radius = 10.0f;
+			float camX = sin(glfwGetTime()) * radius;
+			float camZ = cos(glfwGetTime()) * radius;
+			glm::mat4 viewMatrix;
+			viewMatrix = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 			int viewLoc = glGetUniformLocation(woodenShader.ID, "view");
 			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
