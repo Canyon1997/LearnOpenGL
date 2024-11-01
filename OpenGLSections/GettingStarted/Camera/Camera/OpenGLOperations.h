@@ -9,6 +9,12 @@
 #include <sstream>
 #include <string>
 
+// GLM Libraries
+#include "glm.hpp"
+#include "../../ExternalLibraries/glm/gtc/matrix_transform.hpp"
+#include "../../ExternalLibraries/glm/gtc/type_ptr.hpp"
+
+
 /// <summary>
 /// Initializes external libraries and a window to be used for rendering
 /// </summary>
@@ -23,11 +29,5 @@ GLFWwindow* InitializeOpenGL(const std::string& windowName);
 /// <param name="width">Width of the window</param>
 /// <param name="height">Height of the window</param>
 void FrameBufferSizeCallback(GLFWwindow* window, int width, int height);
-
-/// <summary>
-/// Performs any operations from inputs by the user when something specific is pressed
-/// </summary>
-/// <param name="window">The window to perform the input on</param>
-void ProcessInput(GLFWwindow* window);
 
 #endif // !OPENGLOPERATIONS_H

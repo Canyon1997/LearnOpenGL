@@ -3,27 +3,35 @@
 #include <stdlib.h>
 #include <direct.h>
 
-// GLM Libraries
-#include "glm.hpp"
-#include "../../ExternalLibraries/glm/gtc/matrix_transform.hpp"
-#include "../../ExternalLibraries/glm/gtc/type_ptr.hpp"
-
 // Personal/External Libraries
 #include "OpenGLOperations.h"
 #include "Shader.h"
 #include "stb_image.h"
 
-// TODO: Continue with "Walking Around" section
+// TODO: Complete "Look Around" section
+
+// Global vectors to represent camera of scene
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); // Cameras starting position
+glm::vec3 cameraDir = glm::vec3(0.0f, 0.0f, -1.0f); // Cameras direction pointing forward
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Cameras Up position
+
+// DeltaTime
+float deltaTime = 0.0f; // Time between current and last frame
+float lastFrame = 0.0f; // Time of last frame
+
+// Functions
+static void ProcessInput(GLFWwindow* window);
 
 int main()
 {
 	GLFWwindow* window = InitializeOpenGL("Camera");
 
+	
 	Shader woodenShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
 
 	/* Example of how a camera view matrix is made 
 	* 
-	// define camera position (OpenGL points in -z direction
+	// define camera position (Camera is takes 3 steps back. OpenGL points in -z direction so thats why 3 is positive)
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 
 	// define where its trying to point at (origin of coordinate space)
@@ -172,6 +180,9 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
 		ProcessInput(window);
 
 		//set background color
@@ -215,11 +226,8 @@ int main()
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
 			// View Matrix (moves world around for camera view)
-			const float radius = 10.0f;
-			float camX = sin(glfwGetTime()) * radius;
-			float camZ = cos(glfwGetTime()) * radius;
 			glm::mat4 viewMatrix;
-			viewMatrix = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+			viewMatrix = glm::lookAt(cameraPos, (cameraPos + cameraDir), cameraUp);
 
 			int viewLoc = glGetUniformLocation(woodenShader.ID, "view");
 			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
@@ -244,4 +252,40 @@ int main()
 	glfwTerminate();
 
 	return 0;
+}
+
+
+static void ProcessInput(GLFWwindow* window)
+{
+	const float cameraSpeed = 2.0f * deltaTime;
+
+	// Quit Program
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+
+	// Move Forward
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		cameraPos += cameraSpeed * cameraDir;
+	}
+
+	// Move Backward
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		cameraPos -= cameraSpeed * cameraDir;
+	}
+
+	// Move Right
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		cameraPos += glm::normalize(glm::cross(cameraDir, cameraUp)) * cameraSpeed;
+	}
+
+	// Move Left
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		cameraPos -= glm::normalize(glm::cross(cameraDir, cameraUp)) * cameraSpeed;
+	}
 }
