@@ -8,7 +8,7 @@
 #include "Shader.h"
 #include "stb_image.h"
 
-// TODO: Complete "Look Around" section
+// TODO: Complete "Mouse Input" section
 
 // Global vectors to represent camera of scene
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); // Cameras starting position
