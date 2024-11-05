@@ -20,7 +20,21 @@ float deltaTime = 0.0f; // Time between current and last frame
 float lastFrame = 0.0f; // Time of last frame
 
 // Functions
+
+/// <summary>
+/// Processes input from keyboard to perform things in window
+/// </summary>
+/// <param name="window"></param>
 static void ProcessInput(GLFWwindow* window);
+
+
+/// <summary>
+/// Callback function to get x & y values from mouse movements each frame
+/// </summary>
+/// <param name="window">The window to track mouse movements</param>
+/// <param name="xPos">X position of the mouse</param>
+/// <param name="yPos">Y position of the mouse</param>
+void mouse_callback(GLFWwindow* window, double xPos, double yPos);
 
 int main()
 {
@@ -50,6 +64,11 @@ int main()
 	// constructs a camera view matrix from camera vectors above
 	glm::mat4 cameraViewMatrix = glm::lookAt(cameraPos, cameraTarget, upVector);
 	*/
+
+	// hides mouse and keeps it at center of the screen
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	glfwSetCursorPosCallback(window, mouse_callback);
 
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -288,4 +307,10 @@ static void ProcessInput(GLFWwindow* window)
 	{
 		cameraPos -= glm::normalize(glm::cross(cameraDir, cameraUp)) * cameraSpeed;
 	}
+}
+
+
+void mouse_callback(GLFWwindow* window, double xPos, double yPos)
+{
+
 }
