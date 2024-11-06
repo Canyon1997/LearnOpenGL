@@ -19,6 +19,13 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Cameras Up position
 float deltaTime = 0.0f; // Time between current and last frame
 float lastFrame = 0.0f; // Time of last frame
 
+// mouse positions starting in the middle of the screen (window length/2 & window height/2)
+float mouseX = 400;
+float mouseY = 300;
+float pitch = 0.0f;
+float yaw = -90.0f;
+bool firstMouse = true; // updates mouse positions after first frame
+
 // Functions
 
 /// <summary>
@@ -312,5 +319,39 @@ static void ProcessInput(GLFWwindow* window)
 
 void mouse_callback(GLFWwindow* window, double xPos, double yPos)
 {
+	if (firstMouse)
+	{
+		mouseX = xPos;
+		mouseY = yPos;
+		firstMouse = false;
+	}
 
+	float xOffset = xPos - mouseX;
+	float yOffset = mouseY - yPos; // reversed subtraction so moving up on mouse moves up in camera
+
+	mouseX = xPos;
+	mouseY = yPos;
+
+	const float lookSensitivity = 0.1f;
+	xOffset *= lookSensitivity;
+	yOffset *= lookSensitivity;
+
+	yaw += xOffset;
+	pitch += yOffset;
+
+	if (pitch > 89.0f)
+	{
+		pitch = 89.0f;
+	}
+
+	if (pitch < -89.0f)
+	{
+		pitch = -89.0f;
+	}
+
+	glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraDir = glm::normalize(direction);
 }
