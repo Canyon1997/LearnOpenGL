@@ -8,8 +8,6 @@
 #include "Shader.h"
 #include "stb_image.h"
 
-// TODO: Complete "Mouse Input" section
-
 // Global vectors to represent camera of scene
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); // Cameras starting position
 glm::vec3 cameraDir = glm::vec3(0.0f, 0.0f, -1.0f); // Cameras direction pointing forward
@@ -25,6 +23,7 @@ float mouseY = 300;
 float pitch = 0.0f;
 float yaw = -90.0f;
 bool firstMouse = true; // updates mouse positions after first frame
+float fov = 45.0f; // fov for camera
 
 // Functions
 
@@ -42,6 +41,14 @@ static void ProcessInput(GLFWwindow* window);
 /// <param name="xPos">X position of the mouse</param>
 /// <param name="yPos">Y position of the mouse</param>
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
+
+/// <summary>
+/// Zooms the camera in/out with the scroll wheel
+/// </summary>
+/// <param name="window">The window the callback executes on</param>
+/// <param name="xOffset">The FOV offset to apply on the X axis</param>
+/// <param name="yOffset">The FOV offset to apply on the Y axis</param>
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
 
 int main()
 {
@@ -76,6 +83,7 @@ int main()
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
 
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -224,7 +232,7 @@ int main()
 
 		// Projection Matrix (makes objects further away smaller to give more realistic look)
 		glm::mat4 projectionMatrix = glm::mat4(1.0f);
-		projectionMatrix = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+		projectionMatrix = glm::perspective(glm::radians(fov), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		
 		int projLoc = glGetUniformLocation(woodenShader.ID, "projection");
@@ -354,4 +362,19 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos)
 	direction.y = sin(glm::radians(pitch));
 	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 	cameraDir = glm::normalize(direction);
+}
+
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset)
+{
+	fov -= (float)yOffset;
+	
+	if (fov < 1.0f)
+	{
+		fov = 1.0f;
+	}
+
+	if (fov > 90.0f)
+	{
+		fov = 90.0f;
+	}
 }
