@@ -21,6 +21,12 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Cameras Up position
 Camera mainCamera(cameraPos, cameraDir, cameraUp);
 
 /// <summary>
+/// Processes input from user
+/// </summary>
+/// <param name="window">window to take input from</param>
+void ProcessInput(GLFWwindow* window);
+
+/// <summary>
 /// wrapper function to call objects cursor function
 /// </summary>
 /// <param name="window">The window to track mouse movements</param>
@@ -181,9 +187,9 @@ int main()
 
 		float origCamSpeed = mainCamera.GetCameraSpeed();
 		float deltaCamSpeed = mainCamera.GetCameraSpeed() * deltaTime;
-		mainCamera.SetCameraSpeed(deltaCamSpeed);
-		mainCamera.ProcessInput(window);
-		mainCamera.SetCameraSpeed(origCamSpeed);
+		//mainCamera.SetCameraSpeed(deltaCamSpeed);
+		ProcessInput(window);
+		//mainCamera.SetCameraSpeed(origCamSpeed);
 
 		//set background color
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -249,6 +255,34 @@ int main()
 	glfwTerminate();
 
 	return 0;
+}
+
+void ProcessInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		mainCamera.ProcessInput(GLFW_KEY_W);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		mainCamera.ProcessInput(GLFW_KEY_S);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		mainCamera.ProcessInput(GLFW_KEY_D);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		mainCamera.ProcessInput(GLFW_KEY_A);
+	}
 }
 
 void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos)

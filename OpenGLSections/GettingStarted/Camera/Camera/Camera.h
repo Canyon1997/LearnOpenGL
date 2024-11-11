@@ -70,8 +70,8 @@ public:
 	/// <summary>
 	/// Takes in input from user keyboard to do things
 	/// </summary>
-	/// <param name="window">The window the callback executes on</param>
-	void ProcessInput(GLFWwindow* window);
+	/// <param name="key">The key that was pressed</param>
+	void ProcessInput(int key);
 
 	/// <summary>
 	/// Generates projection matrix to pass into shaders

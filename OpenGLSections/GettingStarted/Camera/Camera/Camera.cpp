@@ -1,30 +1,25 @@
 #include "Camera.h"
 
-void Camera::ProcessInput(GLFWwindow* window)
+void Camera::ProcessInput(int key)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
 
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	switch (key)
 	{
-		camPos += cameraSpeed * camForwardDir;
-	}
+	    case GLFW_KEY_W:
+			camPos += cameraSpeed * camForwardDir;
+			break;
 
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-	{
-		camPos -= cameraSpeed * camForwardDir;
-	}
+		case GLFW_KEY_S:
+			camPos -= cameraSpeed * camForwardDir;
+			break;
 
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-	{
-		camPos += glm::normalize(glm::cross(camForwardDir, camUpDir)) * cameraSpeed;
-	}
+		case GLFW_KEY_D:
+			camPos += glm::normalize(glm::cross(camForwardDir, camUpDir)) * cameraSpeed;
+			break;
 
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-	{
-		camPos -= glm::normalize(glm::cross(camForwardDir, camUpDir)) * cameraSpeed;
+		case GLFW_KEY_A:
+			camPos -= glm::normalize(glm::cross(camForwardDir, camUpDir)) * cameraSpeed;
+			break;
 	}
 }
 
