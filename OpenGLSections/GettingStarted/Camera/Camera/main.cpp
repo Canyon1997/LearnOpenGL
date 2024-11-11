@@ -48,9 +48,9 @@ int main()
 	Shader woodenShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
 
 	// hides mouse and keeps it at center of the screen
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window, mainCam_cursor_wrapper);
 	glfwSetScrollCallback(window, mainCam_scroll_wrapper);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -287,10 +287,10 @@ void ProcessInput(GLFWwindow* window)
 
 void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos)
 {
-	mainCamera.mouse_callback(window, xPos, yPos);
+	mainCamera.mouse_callback(window, (float)xPos, (float)yPos);
 }
 
 void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset)
 {
-	mainCamera.scroll_callback(window, xOffset, yOffset);
+	mainCamera.scroll_callback(window, (float)xOffset, (float)yOffset);
 }

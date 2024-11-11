@@ -57,7 +57,7 @@ public:
     /// <param name="window">The window to track mouse movements</param>
     /// <param name="xPos">X position of the mouse</param>
     /// <param name="yPos">Y position of the mouse</param>
-	void mouse_callback(GLFWwindow* window, double xPos, double yPos);
+	void mouse_callback(GLFWwindow* window, float xPos, float yPos);
 
 	/// <summary>
 	/// Zooms the camera in/out with the scroll wheel
@@ -65,7 +65,7 @@ public:
 	/// <param name="window">The window the callback executes on</param>
 	/// <param name="xOffset">The FOV offset to apply on the X axis</param>
 	/// <param name="yOffset">The FOV offset to apply on the Y axis</param>
-	void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
+	void scroll_callback(GLFWwindow* window, float xOffset, float yOffset);
 
 	/// <summary>
 	/// Takes in input from user keyboard to do things

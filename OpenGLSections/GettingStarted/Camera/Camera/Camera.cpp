@@ -29,7 +29,7 @@ void Camera::GenerateProjectionMatrix(float windowWidth, float windowHeight, flo
 	projMatrix = glm::perspective(glm::radians(fov), windowWidth / windowHeight, near, far);
 }
 
-void Camera::mouse_callback(GLFWwindow* window, double xPos, double yPos)
+void Camera::mouse_callback(GLFWwindow* window, float xPos, float yPos)
 {
 	if (firstMouse)
 	{
@@ -67,7 +67,7 @@ void Camera::mouse_callback(GLFWwindow* window, double xPos, double yPos)
 	camForwardDir = glm::normalize(direction);
 }
 
-void Camera::scroll_callback(GLFWwindow* window, double xOffset, double yOffset)
+void Camera::scroll_callback(GLFWwindow* window, float xOffset, float yOffset)
 {
 	fov -= (float)yOffset;
 
