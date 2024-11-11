@@ -2,88 +2,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <direct.h>
+#include <functional>
 
 // Personal/External Libraries
+#include "Camera.h"
 #include "OpenGLOperations.h"
 #include "Shader.h"
 #include "stb_image.h"
-
-// Global vectors to represent camera of scene
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); // Cameras starting position
-glm::vec3 cameraDir = glm::vec3(0.0f, 0.0f, -1.0f); // Cameras direction pointing forward
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Cameras Up position
 
 // DeltaTime
 float deltaTime = 0.0f; // Time between current and last frame
 float lastFrame = 0.0f; // Time of last frame
 
-// mouse positions starting in the middle of the screen (window length/2 & window height/2)
-float mouseX = 400;
-float mouseY = 300;
-float pitch = 0.0f;
-float yaw = -90.0f;
-bool firstMouse = true; // updates mouse positions after first frame
-float fov = 45.0f; // fov for camera
-
-// Functions
+// Create global camera for the scene
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); // Cameras starting position
+glm::vec3 cameraDir = glm::vec3(0.0f, 0.0f, -1.0f); // Cameras direction pointing forward
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); // Cameras Up position
+Camera mainCamera(cameraPos, cameraDir, cameraUp);
 
 /// <summary>
-/// Processes input from keyboard to perform things in window
-/// </summary>
-/// <param name="window"></param>
-static void ProcessInput(GLFWwindow* window);
-
-
-/// <summary>
-/// Callback function to get x & y values from mouse movements each frame
+/// wrapper function to call objects cursor function
 /// </summary>
 /// <param name="window">The window to track mouse movements</param>
 /// <param name="xPos">X position of the mouse</param>
 /// <param name="yPos">Y position of the mouse</param>
-void mouse_callback(GLFWwindow* window, double xPos, double yPos);
+void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos);
 
 /// <summary>
-/// Zooms the camera in/out with the scroll wheel
+/// wrapper function to call objects scroll wheel function
 /// </summary>
 /// <param name="window">The window the callback executes on</param>
 /// <param name="xOffset">The FOV offset to apply on the X axis</param>
 /// <param name="yOffset">The FOV offset to apply on the Y axis</param>
-void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
+void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset);
 
 int main()
 {
 	GLFWwindow* window = InitializeOpenGL("Camera");
-
-	
 	Shader woodenShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
-
-	/* Example of how a camera view matrix is made 
-	* 
-	// define camera position (Camera is takes 3 steps back. OpenGL points in -z direction so thats why 3 is positive)
-	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-
-	// define where its trying to point at (origin of coordinate space)
-	glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-
-	// get camera direction vector
-	glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
-
-	// get camera right angle by defining a generic up vector (in openGL 'y' is up) and crossing with camera direction vector
-	glm::vec3 upVector = glm::vec3(0.0f, 1.0f, 0.0f);
-	glm::vec3 cameraRight = glm::normalize(glm::cross(upVector, cameraDirection));
-
-	// define cameras positive y axis by crossing cameras forward direction by its right direction
-	glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
-
-	// constructs a camera view matrix from camera vectors above
-	glm::mat4 cameraViewMatrix = glm::lookAt(cameraPos, cameraTarget, upVector);
-	*/
 
 	// hides mouse and keeps it at center of the screen
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-	glfwSetCursorPosCallback(window, mouse_callback);
-	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetCursorPosCallback(window, mainCam_cursor_wrapper);
+	glfwSetScrollCallback(window, mainCam_scroll_wrapper);
 
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -217,7 +178,12 @@ int main()
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		ProcessInput(window);
+
+		float origCamSpeed = mainCamera.GetCameraSpeed();
+		float deltaCamSpeed = mainCamera.GetCameraSpeed() * deltaTime;
+		mainCamera.SetCameraSpeed(deltaCamSpeed);
+		mainCamera.ProcessInput(window);
+		mainCamera.SetCameraSpeed(origCamSpeed);
 
 		//set background color
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -231,12 +197,9 @@ int main()
 		woodenShader.Use();
 
 		// Projection Matrix (makes objects further away smaller to give more realistic look)
-		glm::mat4 projectionMatrix = glm::mat4(1.0f);
-		projectionMatrix = glm::perspective(glm::radians(fov), 800.0f / 600.0f, 0.1f, 100.0f);
-
-		
+		mainCamera.GenerateProjectionMatrix(400.0f, 300.0f, 0.1f, 100.0f);
 		int projLoc = glGetUniformLocation(woodenShader.ID, "projection");
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(mainCamera.GetProjMatrix()));
 
 		glBindVertexArray(VAO);
 
@@ -288,93 +251,12 @@ int main()
 	return 0;
 }
 
-
-static void ProcessInput(GLFWwindow* window)
+void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos)
 {
-	const float cameraSpeed = 2.0f * deltaTime;
-
-	// Quit Program
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
-
-	// Move Forward
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-	{
-		cameraPos += cameraSpeed * cameraDir;
-	}
-
-	// Move Backward
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-	{
-		cameraPos -= cameraSpeed * cameraDir;
-	}
-
-	// Move Right
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-	{
-		cameraPos += glm::normalize(glm::cross(cameraDir, cameraUp)) * cameraSpeed;
-	}
-
-	// Move Left
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-	{
-		cameraPos -= glm::normalize(glm::cross(cameraDir, cameraUp)) * cameraSpeed;
-	}
+	mainCamera.mouse_callback(window, xPos, yPos);
 }
 
-
-void mouse_callback(GLFWwindow* window, double xPos, double yPos)
+void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset)
 {
-	if (firstMouse)
-	{
-		mouseX = xPos;
-		mouseY = yPos;
-		firstMouse = false;
-	}
-
-	float xOffset = xPos - mouseX;
-	float yOffset = mouseY - yPos; // reversed subtraction so moving up on mouse moves up in camera
-
-	mouseX = xPos;
-	mouseY = yPos;
-
-	const float lookSensitivity = 0.1f;
-	xOffset *= lookSensitivity;
-	yOffset *= lookSensitivity;
-
-	yaw += xOffset;
-	pitch += yOffset;
-
-	if (pitch > 89.0f)
-	{
-		pitch = 89.0f;
-	}
-
-	if (pitch < -89.0f)
-	{
-		pitch = -89.0f;
-	}
-
-	glm::vec3 direction;
-	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	direction.y = sin(glm::radians(pitch));
-	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraDir = glm::normalize(direction);
-}
-
-void scroll_callback(GLFWwindow* window, double xOffset, double yOffset)
-{
-	fov -= (float)yOffset;
-	
-	if (fov < 1.0f)
-	{
-		fov = 1.0f;
-	}
-
-	if (fov > 90.0f)
-	{
-		fov = 90.0f;
-	}
+	mainCamera.scroll_callback(window, xOffset, yOffset);
 }
