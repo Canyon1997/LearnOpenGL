@@ -187,9 +187,9 @@ int main()
 
 		float origCamSpeed = mainCamera.GetCameraSpeed();
 		float deltaCamSpeed = mainCamera.GetCameraSpeed() * deltaTime;
-		//mainCamera.SetCameraSpeed(deltaCamSpeed);
+		mainCamera.SetCameraSpeed(deltaCamSpeed);
 		ProcessInput(window);
-		//mainCamera.SetCameraSpeed(origCamSpeed);
+		mainCamera.SetCameraSpeed(origCamSpeed);
 
 		//set background color
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -228,12 +228,9 @@ int main()
 			int modelLoc = glGetUniformLocation(woodenShader.ID, "model");
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
-			// View Matrix (moves world around for camera view)
-			glm::mat4 viewMatrix;
-			viewMatrix = glm::lookAt(cameraPos, (cameraPos + cameraDir), cameraUp);
-
+			mainCamera.GenerateViewMatrix();
 			int viewLoc = glGetUniformLocation(woodenShader.ID, "view");
-			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
 
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}

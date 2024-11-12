@@ -29,6 +29,11 @@ void Camera::GenerateProjectionMatrix(float windowWidth, float windowHeight, flo
 	projMatrix = glm::perspective(glm::radians(fov), windowWidth / windowHeight, near, far);
 }
 
+void Camera::GenerateViewMatrix()
+{
+	viewMatrix = glm::lookAt(camPos, camPos + camForwardDir, camUpDir);
+}
+
 void Camera::mouse_callback(GLFWwindow* window, float xPos, float yPos)
 {
 	if (firstMouse)

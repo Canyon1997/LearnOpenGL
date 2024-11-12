@@ -20,10 +20,13 @@ private:
 	// ProjectionMatrix
 	glm::mat4 projMatrix;
 
+	// ViewMatrix
+	glm::mat4 viewMatrix;
+
 	// cursor variables
 	float lastX = 400;
 	float lastY = 300;
-	float mouseSens = 1.0f;
+	float mouseSens = 0.2f;
 
 	// camera rotation variables
 	float pitch = 0.0f;
@@ -83,6 +86,11 @@ public:
 	void GenerateProjectionMatrix(float windowWidth, float windowHeight, float near, float far);
 
 	/// <summary>
+	/// Generates view matrix to pass into shaders
+	/// </summary>
+	void GenerateViewMatrix();
+
+	/// <summary>
 	/// Sets the x axis position of the mouse to start at for calculating movement, etc. in scene.
 	/// generally this will be the middle of the window (window width / 2)
 	/// </summary>
@@ -127,6 +135,14 @@ public:
 	glm::mat4 GetProjMatrix() const
 	{
 		return projMatrix;
+	}
+
+	/// <summary>
+	/// Gets the view matrix of the camera to use for things like shaders, etc.
+	/// </summary>
+	glm::mat4 GetViewMatrix() const
+	{
+		return viewMatrix;
 	}
 
 
