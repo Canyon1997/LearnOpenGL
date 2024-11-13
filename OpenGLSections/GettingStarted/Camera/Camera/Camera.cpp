@@ -21,6 +21,7 @@ void Camera::ProcessInput(int key)
 			camPos -= glm::normalize(glm::cross(camForwardDir, camUpDir)) * cameraSpeed;
 			break;
 	}
+	camPos.y = 0.0f; // FPS style, keeps camera from "flying" off xz plane
 }
 
 void Camera::GenerateProjectionMatrix(float windowWidth, float windowHeight, float near, float far)
