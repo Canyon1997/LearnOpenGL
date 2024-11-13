@@ -217,7 +217,9 @@ int main()
 
 			if (i % 3 == 0)
 			{
+				modelMatrix = glm::translate(modelMatrix, glm::vec3(glm::sin((float)glfwGetTime() * 1.0f), 1.0f, glm::cos(glfwGetTime() * 1.0f)));
 				modelMatrix = glm::rotate(modelMatrix, (float)glfwGetTime() * glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+				
 			}
 			else
 			{
