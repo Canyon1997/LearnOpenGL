@@ -234,6 +234,10 @@ int main()
     lightShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
     lightShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 
+    glm::mat4 lightModel(1.0f);
+    lightModel = glm::translate(lightModel, lightPos);
+    lightModel = glm::scale(lightModel, glm::vec3(0.2f));
+
 	while (!glfwWindowShouldClose(window))
 	{
         // update delta time
