@@ -55,127 +55,16 @@ int main()
 {
 	GLFWwindow* window = InitializeOpenGL("Colors", WINDOW_WIDTH, WINDOW_HEIGHT);
 
-    Shader cubeShader("Shaders//WoodenVertexShader.glsl", "Shaders//WoodenFragmentShader.glsl");
-    Shader lightShader("Shaders//LightVertex.glsl", "Shaders//LightFragment.glsl");
+    Shader cubeShader("Shaders//CubeVertex.glsl", "Shaders//CubeFragment.glsl");
+    Shader lightSourceShader("Shaders//LightSourceVertex.glsl", "Shaders//LightSourceFragment.glsl");
 
     glfwSetCursorPosCallback(window, mainCam_cursor_wrapper);
     glfwSetScrollCallback(window, mainCam_scroll_wrapper);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 
-    // Data for object to show in scene with light reflected on it
+    // Vertices to create a cube
     float CubeVertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-    };
-
-    unsigned int cubeVBO;
-    glGenBuffers(1, &cubeVBO);
-    glBindBuffer(GL_VERTEX_ARRAY, cubeVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float), CubeVertices, GL_STATIC_DRAW);
-
-    unsigned int cubeVAO;
-    glGenVertexArrays(1, &cubeVAO);
-    glBindVertexArray(cubeVAO);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-    unsigned int woodTBO;
-    glGenTextures(1, &woodTBO);
-    glBindTexture(GL_TEXTURE_2D, woodTBO);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    // Load wood texture data
-    int woodWidth, woodHeight, woodChannel;
-    unsigned char* woodTextureData = stbi_load("Textures//woodencontainer.jpg", &woodWidth, &woodHeight, &woodChannel, 0);
-
-    if (woodTextureData)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, woodWidth, woodHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, woodTextureData);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load wood texture data" << std::endl;
-        return -1;
-    }
-    stbi_image_free(woodTextureData);
-
-    // Load smile face texture data
-    unsigned int smileTBO;
-    glGenTextures(1, &smileTBO);
-    glBindTexture(GL_TEXTURE_2D, smileTBO);
-
-    stbi_set_flip_vertically_on_load(true);
-    int smileWidth, smileHeight, smileChannel;
-    unsigned char* smileTextureData = stbi_load("Textures//awesomeface.png", &smileWidth, &smileHeight, &smileChannel, 0);
-
-    if (smileTextureData)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, smileWidth, smileHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, smileTextureData);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load awesomeface texture data" << std::endl;
-        return -1;
-    }
-    stbi_image_free(smileTextureData);
-
-    cubeShader.Use();
-    cubeShader.setInt("firstTexture", 0);
-    cubeShader.setInt("secondTexture", 1);
-
-
-
-    // Light object to have other objects reflect off of
-    float LightVertices[] = {
     -0.5f, -0.5f, -0.5f,
      0.5f, -0.5f, -0.5f,
      0.5f,  0.5f, -0.5f,
@@ -219,24 +108,31 @@ int main()
     -0.5f,  0.5f, -0.5f
     };
 
+    // Cube Buffer Data
+    unsigned int cubeVBO;
+    glGenBuffers(1, &cubeVBO);
+    glBindBuffer(GL_VERTEX_ARRAY, cubeVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
+
+    unsigned int cubeVAO;
+    glGenVertexArrays(1, &cubeVAO);
+    glBindVertexArray(cubeVAO);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+
+    // Light Source Buffer Data
     unsigned int lightVBO;
     glGenBuffers(1, &lightVBO);
     glBindBuffer(GL_ARRAY_BUFFER, lightVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(LightVertices), LightVertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
 
     unsigned int lightVAO;
     glGenVertexArrays(1, &lightVAO);
     glBindVertexArray(lightVAO);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-
-    lightShader.Use();
-    lightShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-    lightShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-
-    glm::mat4 lightModel(1.0f);
-    lightModel = glm::translate(lightModel, lightPos);
-    lightModel = glm::scale(lightModel, glm::vec3(0.2f));
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -254,10 +150,59 @@ int main()
 
         // render
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // cube
+        cubeShader.Use();
+        cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+
+        mainCamera.GenerateProjectionMatrix(WINDOW_WIDTH, WINDOW_HEIGHT, 0.1f, 100.0f);
+        int cubeProj = glGetUniformLocation(cubeShader.ID, "proj");
+        glUniformMatrix4fv(cubeProj, 1, GL_FALSE, glm::value_ptr(mainCamera.GetProjMatrix()));
+
+        mainCamera.GenerateViewMatrix();
+        int cubeView = glGetUniformLocation(cubeShader.ID, "view");
+        glUniformMatrix4fv(cubeView, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
+
+        glm::mat4 model = glm::mat4(1.0f);
+        int cubeModel = glGetUniformLocation(cubeShader.ID, "model");
+        glUniformMatrix4fv(cubeModel, 1, GL_FALSE, glm::value_ptr(model));
+
+        glBindVertexArray(cubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+        //light source
+        lightSourceShader.Use();
+
+        int lightProj = glGetUniformLocation(lightSourceShader.ID, "proj");
+        glUniformMatrix4fv(lightProj, 1, GL_FALSE, glm::value_ptr(mainCamera.GetProjMatrix()));
+
+        int lightView = glGetUniformLocation(cubeShader.ID, "view");
+        glUniformMatrix4fv(lightView, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f));
+
+        int lightModel = glGetUniformLocation(lightSourceShader.ID, "model");
+        glUniformMatrix4fv(lightModel, 1, GL_FALSE, glm::value_ptr(model));
+
+        glBindVertexArray(lightVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
 	}
 
 
+    glDeleteVertexArrays(1, &cubeVAO);
+    glDeleteVertexArrays(1, &lightVAO);
+    glDeleteBuffers(1, &cubeVBO);
+    glDeleteBuffers(1, &lightVBO);
+
+    glfwTerminate();
 	return 0;
 }
 
