@@ -110,12 +110,14 @@ int main()
 
     // Cube Buffer Data
     unsigned int cubeVBO;
+    unsigned int cubeVAO;
+
+    glGenVertexArrays(1, &cubeVAO);
     glGenBuffers(1, &cubeVBO);
-    glBindBuffer(GL_VERTEX_ARRAY, cubeVBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
 
-    unsigned int cubeVAO;
-    glGenVertexArrays(1, &cubeVAO);
     glBindVertexArray(cubeVAO);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -123,14 +125,12 @@ int main()
 
 
     // Light Source Buffer Data
-    unsigned int lightVBO;
-    glGenBuffers(1, &lightVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, lightVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
-
     unsigned int lightVAO;
     glGenVertexArrays(1, &lightVAO);
+
     glBindVertexArray(lightVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
@@ -149,7 +149,7 @@ int main()
         mainCamera.SetCameraSpeed(origCamSpeed);
 
         // render
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // cube
@@ -200,7 +200,6 @@ int main()
     glDeleteVertexArrays(1, &cubeVAO);
     glDeleteVertexArrays(1, &lightVAO);
     glDeleteBuffers(1, &cubeVBO);
-    glDeleteBuffers(1, &lightVBO);
 
     glfwTerminate();
 	return 0;
