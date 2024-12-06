@@ -87,6 +87,5 @@ void Shader::setFloat(const std::string& name, const float& value) const
 
 void Shader::setVec3(const std::string& name, const float& value1, const float& value2, const float& value3) const
 {
-	GLfloat vector[] = {value1, value2, value3};
-	glUniform3fv(glGetUniformLocation(ID, name.c_str()), 3, vector);
+	glUniform3f(glGetUniformLocation(ID, name.c_str()), value1, value2, value3);
 }

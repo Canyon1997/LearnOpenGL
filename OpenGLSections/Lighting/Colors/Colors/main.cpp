@@ -54,6 +54,7 @@ void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset);
 int main()
 {
 	GLFWwindow* window = InitializeOpenGL("Colors", WINDOW_WIDTH, WINDOW_HEIGHT);
+    glEnable(GL_DEPTH_TEST);
 
     Shader cubeShader("Shaders//CubeVertex.glsl", "Shaders//CubeFragment.glsl");
     Shader lightSourceShader("Shaders//LightSourceVertex.glsl", "Shaders//LightSourceFragment.glsl");
@@ -114,23 +115,19 @@ int main()
 
     glGenVertexArrays(1, &cubeVAO);
     glGenBuffers(1, &cubeVBO);
-
     glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
-
     glBindVertexArray(cubeVAO);
-
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
 
     // Light Source Buffer Data
     unsigned int lightVAO;
-    glGenVertexArrays(1, &lightVAO);
 
+    glGenVertexArrays(1, &lightVAO);
     glBindVertexArray(lightVAO);
     glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
@@ -179,7 +176,7 @@ int main()
         int lightProj = glGetUniformLocation(lightSourceShader.ID, "proj");
         glUniformMatrix4fv(lightProj, 1, GL_FALSE, glm::value_ptr(mainCamera.GetProjMatrix()));
 
-        int lightView = glGetUniformLocation(cubeShader.ID, "view");
+        int lightView = glGetUniformLocation(lightSourceShader.ID, "view");
         glUniformMatrix4fv(lightView, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
 
         model = glm::mat4(1.0f);
