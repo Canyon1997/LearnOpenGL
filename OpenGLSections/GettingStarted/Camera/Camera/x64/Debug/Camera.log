@@ -1,2 +1,3 @@
 ﻿  main.cpp
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Camera\Camera\main.cpp(184,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Camera.vcxproj -> C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\GettingStarted\Camera\x64\Debug\Camera.exe
