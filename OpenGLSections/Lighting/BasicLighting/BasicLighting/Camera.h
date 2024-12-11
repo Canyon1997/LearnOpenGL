@@ -48,10 +48,8 @@ public:
 	/// Takes in a camera starting position, its forward direction vector, and its up vector to create an instance of a camera to use in a scene
 	/// </summary>
 	Camera(const glm::vec3& cameraPos, const glm::vec3& cameraForward, const glm::vec3& cameraUp)
+		: camPos{cameraPos}, camForwardDir{cameraForward}, camUpDir{cameraUp}
 	{
-		camPos = cameraPos;
-		camForwardDir = cameraForward;
-		camUpDir = cameraUp;
 	}
 
 	/// <summary>
