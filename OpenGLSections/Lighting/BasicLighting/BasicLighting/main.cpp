@@ -112,7 +112,6 @@ int main()
 
     unsigned int cubeVBO;
     unsigned int cubeVAO;
-
     glGenBuffers(1, &cubeVBO);
     glGenVertexArrays(1, &cubeVAO);
     glBindVertexArray(cubeVAO);
@@ -123,13 +122,13 @@ int main()
 
   
     unsigned int lightSourceVAO;
-
     glGenVertexArrays(1, &lightSourceVAO);
     glBindVertexArray(lightSourceVAO);
     glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
+    glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window))
     {
         // handle delta time
