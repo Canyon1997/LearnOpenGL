@@ -53,12 +53,12 @@ public:
 	}
 
 	/// <summary>
-    /// Callback function to get x & y values from mouse movements each frame
+    /// Rotates camera when moving mouse
     /// </summary>
     /// <param name="window">The window to track mouse movements</param>
     /// <param name="xPos">X position of the mouse</param>
     /// <param name="yPos">Y position of the mouse</param>
-	void mouse_callback(GLFWwindow* window, float xPos, float yPos);
+	void RotateCameraInput(GLFWwindow* window, float xPos, float yPos);
 
 	/// <summary>
 	/// Zooms the camera in/out with the scroll wheel
@@ -66,7 +66,7 @@ public:
 	/// <param name="window">The window the callback executes on</param>
 	/// <param name="xOffset">The FOV offset to apply on the X axis</param>
 	/// <param name="yOffset">The FOV offset to apply on the Y axis</param>
-	void scroll_callback(GLFWwindow* window, float xOffset, float yOffset);
+	void ZoomCameraInput(GLFWwindow* window, float xOffset, float yOffset);
 
 	/// <summary>
 	/// Takes in input from user keyboard to do things
@@ -125,7 +125,6 @@ public:
 	{
 		cameraSpeed = speed;
 	}
-
 	
 	/// <summary>
 	/// Gets the projection matrix of the camera to use for things like shaders, etc.
@@ -150,6 +149,11 @@ public:
 	float GetCameraSpeed() const
 	{
 		return cameraSpeed;
+	}
+
+	glm::vec3 GetCameraPosition() const
+	{
+		return camPos;
 	}
 
 };

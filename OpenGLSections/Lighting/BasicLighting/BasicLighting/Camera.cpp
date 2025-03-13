@@ -35,7 +35,9 @@ void Camera::GenerateViewMatrix()
 	viewMatrix = glm::lookAt(camPos, camPos + camForwardDir, camUpDir);
 }
 
-void Camera::mouse_callback(GLFWwindow* window, float xPos, float yPos)
+
+
+void Camera::RotateCameraInput(GLFWwindow* window, float xPos, float yPos)
 {
 	if (firstMouse)
 	{
@@ -73,7 +75,7 @@ void Camera::mouse_callback(GLFWwindow* window, float xPos, float yPos)
 	camForwardDir = glm::normalize(direction);
 }
 
-void Camera::scroll_callback(GLFWwindow* window, float xOffset, float yOffset)
+void Camera::ZoomCameraInput(GLFWwindow* window, float xOffset, float yOffset)
 {
 	fov -= (float)yOffset;
 
