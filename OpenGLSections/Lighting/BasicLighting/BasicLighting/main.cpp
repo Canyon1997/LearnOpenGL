@@ -150,6 +150,10 @@ int main()
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        //Rotate light source horizontally
+        lightPos.x = glm::cos(glfwGetTime()) * 2.0f;
+        lightPos.z = glm::sin(glfwGetTime()) * 2.0f;
+
         // cube
         glm::vec3 camPos = mainCamera.GetCameraPosition();
         cubeShader.Use();
