@@ -37,32 +37,27 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 /// <param name="window">window to take input from</param>
 void ProcessInput(GLFWwindow* window);
 
-/// <summary>
-/// wrapper function to call objects cursor function
-/// </summary>
-/// <param name="window">The window to track mouse movements</param>
-/// <param name="xPos">X position of the mouse</param>
-/// <param name="yPos">Y position of the mouse</param>
-void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos);
-
-/// <summary>
-/// wrapper function to call objects scroll wheel function
-/// </summary>
-/// <param name="window">The window the callback executes on</param>
-/// <param name="xOffset">The FOV offset to apply on the X axis</param>
-/// <param name="yOffset">The FOV offset to apply on the Y axis</param>
-void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset);
-
-
 
 int main()
 {
+    // initialize openGL
     GLFWwindow* window = InitializeOpenGL("BasicLighting", WINDOW_WIDTH, WINDOW_HEIGHT);
     Shader cubeShader = Shader("Shaders//CubeVertex.glsl", "Shaders//CubeFragment.glsl");
     Shader lightSourceShader = Shader("Shaders//LightSourceVertex.glsl", "Shaders//LightSourceFragment.glsl");
 
-    glfwSetCursorPosCallback(window, mainCam_cursor_wrapper);
-    glfwSetScrollCallback(window, mainCam_scroll_wrapper);
+    // Cursor callback
+    auto cursorLambda = [](GLFWwindow* window, double xPos, double yPos) {
+        mainCamera.RotateCameraInput(window, xPos, yPos);
+        };
+    glfwSetCursorPosCallback(window, cursorLambda);
+
+    // scroll callback
+    auto scrollLambda = [](GLFWwindow* window, double xOffset, double yOffset) {
+        mainCamera.ZoomCameraInput(window, xOffset, yOffset);
+        };
+    glfwSetScrollCallback(window, scrollLambda);
+    
+    // lock cursor
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Vertices to create a cube
@@ -160,7 +155,6 @@ int main()
         cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         cubeShader.setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
-        cubeShader.setVec3("viewPos", camPos.x, camPos.y, camPos.z);
 
         mainCamera.GenerateProjectionMatrix(WINDOW_WIDTH, WINDOW_HEIGHT, 0.1f, 100.0f);
         int cubeProj = glGetUniformLocation(cubeShader.ID, "proj");
@@ -173,6 +167,10 @@ int main()
         glm::mat4 model = glm::mat4(1.0f);
         int cubeModel = glGetUniformLocation(cubeShader.ID, "model");
         glUniformMatrix4fv(cubeModel, 1, GL_FALSE, glm::value_ptr(model));
+
+        // create normal cube matrix from view perspective
+        glm::mat3 normalCubeMatrix = glm::transpose(glm::inverse(mainCamera.GetViewMatrix() * model));
+        cubeShader.setMat3("normalMatrix", glm::value_ptr(normalCubeMatrix));
 
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -238,14 +236,4 @@ void ProcessInput(GLFWwindow* window)
     {
         mainCamera.ProcessInput(GLFW_KEY_A);
     }
-}
-
-void mainCam_cursor_wrapper(GLFWwindow* window, double xPos, double yPos)
-{
-    mainCamera.RotateCameraInput(window, xPos, yPos);
-}
-
-void mainCam_scroll_wrapper(GLFWwindow* window, double xOffset, double yOffset)
-{
-    mainCamera.ZoomCameraInput(window, xOffset, yOffset);
 }

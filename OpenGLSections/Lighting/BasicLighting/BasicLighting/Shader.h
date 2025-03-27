@@ -26,6 +26,7 @@ public:
 	void setInt(const std::string& name, const int& value) const;
 	void setFloat(const std::string& name, const float& value) const;
 	void setVec3(const std::string& name, const float& value1, const float& value2, const float& value3) const;
+	void setMat3(const std::string& name, const GLfloat* matrix) const;
 
 };
 #endif // !SHADER_H
