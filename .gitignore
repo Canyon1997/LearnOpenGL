@@ -27,5 +27,5 @@
 *.lib
 
 # Executables
-* x64
-* .vs
+* /x64
+* /.vs
