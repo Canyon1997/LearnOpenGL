@@ -1,0 +1,137 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Shaders\\CubeVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Shaders\\CubeFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Shaders\\LightSourceVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Shaders\\LightSourceFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FDFF0341-31A8-4C7C-A498-6BA72DDB695C}|Colors\\Colors.vcxproj|solutionrelative:Colors\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 267,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Shader.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shader.cpp",
+              "RelativeDocumentMoniker": "Colors\\Shader.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shader.cpp",
+              "RelativeToolTip": "Colors\\Shader.cpp",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAgwFkAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-06T01:21:44.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LightSourceFragment.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceFragment.glsl",
+              "RelativeDocumentMoniker": "Colors\\Shaders\\LightSourceFragment.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceFragment.glsl",
+              "RelativeToolTip": "Colors\\Shaders\\LightSourceFragment.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-06T01:00:20.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Camera.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Camera.cpp",
+              "RelativeDocumentMoniker": "Colors\\Camera.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Camera.cpp",
+              "RelativeToolTip": "Colors\\Camera.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-06T00:32:26.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CubeVertex.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeVertex.glsl",
+              "RelativeDocumentMoniker": "Colors\\Shaders\\CubeVertex.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeVertex.glsl",
+              "RelativeToolTip": "Colors\\Shaders\\CubeVertex.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-04T03:19:51.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CubeFragment.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeFragment.glsl",
+              "RelativeDocumentMoniker": "Colors\\Shaders\\CubeFragment.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\CubeFragment.glsl",
+              "RelativeToolTip": "Colors\\Shaders\\CubeFragment.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-04T00:35:56.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LightSourceVertex.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceVertex.glsl",
+              "RelativeDocumentMoniker": "Colors\\Shaders\\LightSourceVertex.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\Shaders\\LightSourceVertex.glsl",
+              "RelativeToolTip": "Colors\\Shaders\\LightSourceVertex.glsl",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-04T00:35:16.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\main.cpp",
+              "RelativeDocumentMoniker": "Colors\\main.cpp",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\Colors\\Colors\\main.cpp",
+              "RelativeToolTip": "Colors\\main.cpp",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAMQAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-25T23:49:09.038Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
