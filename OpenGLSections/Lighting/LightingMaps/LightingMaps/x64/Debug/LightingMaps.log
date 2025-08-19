@@ -1,2 +1,17 @@
-﻿  Camera.cpp
+﻿  main.cpp
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(50,52): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(50,46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(56,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(56,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(133,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(149,46): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(149,46): warning C4244:         with
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(149,46): warning C4244:         [
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(149,46): warning C4244:             T=float
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(149,46): warning C4244:         ]
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(150,46): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(150,46): warning C4244:         with
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(150,46): warning C4244:         [
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(150,46): warning C4244:             T=float
+C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\LightingMaps\main.cpp(150,46): warning C4244:         ]
   LightingMaps.vcxproj -> C:\Users\Canyon\ProgrammingProjects\Graphics\OpenGL\OpenGLSections\Lighting\LightingMaps\x64\Debug\LightingMaps.exe

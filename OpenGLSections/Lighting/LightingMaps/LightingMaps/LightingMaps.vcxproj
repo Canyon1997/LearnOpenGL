@@ -145,6 +145,12 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\CubeFragment.glsl" />
+    <None Include="Shaders\CubeVertex.glsl" />
+    <None Include="Shaders\LightSourceFragment.glsl" />
+    <None Include="Shaders\LightSourceVertex.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

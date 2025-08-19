@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{f042a030-b762-430b-aa90-aed4621b8cc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,5 +50,19 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\CubeFragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\CubeVertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\LightSourceFragment.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\LightSourceVertex.glsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
