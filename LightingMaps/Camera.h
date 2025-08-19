@@ -16,6 +16,7 @@ private:
 	glm::vec3 camPos;
 	glm::vec3 camForwardDir;
 	glm::vec3 camUpDir;
+	glm::vec3 camRightDir;
 
 	// ProjectionMatrix
 	glm::mat4 projMatrix;
@@ -47,9 +48,12 @@ public:
 	/// <summary>
 	/// Takes in a camera starting position, its forward direction vector, and its up vector to create an instance of a camera to use in a scene
 	/// </summary>
-	Camera(const glm::vec3& cameraPos, const glm::vec3& cameraForward, const glm::vec3& cameraUp)
-		: camPos{cameraPos}, camForwardDir{cameraForward}, camUpDir{cameraUp}
+	Camera(const glm::vec3& cameraPos, const glm::vec3& cameraForward)
+		: camPos{cameraPos}, camForwardDir{cameraForward}
 	{
+		glm::vec3 up(0.0f, 1.0f, 0.0f);
+		camRightDir = glm::normalize(glm::cross(up, camForwardDir));
+		camUpDir = glm::normalize(glm::cross(camForwardDir, camRightDir));
 	}
 
 	/// <summary>

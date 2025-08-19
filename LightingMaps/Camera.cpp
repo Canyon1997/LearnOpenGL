@@ -72,6 +72,7 @@ void Camera::RotateCameraInput(GLFWwindow* window, float xPos, float yPos)
 	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
 	direction.y = sin(glm::radians(pitch));
 	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+
 	camForwardDir = glm::normalize(direction);
 }
 
