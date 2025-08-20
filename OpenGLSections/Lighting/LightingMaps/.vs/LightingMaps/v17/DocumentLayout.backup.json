@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\Shaders\\LightSourceVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\Shaders\\LightSourceFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\Shaders\\CubeFragment.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\Shaders\\CubeVertex.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{95DAE901-4DC0-4935-9104-58D70BF988D8}|LightingMaps\\LightingMaps.vcxproj|solutionrelative:LightingMaps\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -22,15 +38,67 @@
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 148,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CubeVertex.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeVertex.glsl",
+              "RelativeDocumentMoniker": "LightingMaps\\Shaders\\CubeVertex.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeVertex.glsl",
+              "RelativeToolTip": "LightingMaps\\Shaders\\CubeVertex.glsl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-19T03:34:05.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LightSourceVertex.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceVertex.glsl",
+              "RelativeDocumentMoniker": "LightingMaps\\Shaders\\LightSourceVertex.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceVertex.glsl",
+              "RelativeToolTip": "LightingMaps\\Shaders\\LightSourceVertex.glsl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-19T03:34:02.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "LightSourceFragment.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceFragment.glsl",
+              "RelativeDocumentMoniker": "LightingMaps\\Shaders\\LightSourceFragment.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\LightSourceFragment.glsl",
+              "RelativeToolTip": "LightingMaps\\Shaders\\LightSourceFragment.glsl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-19T03:34:01.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CubeFragment.glsl",
+              "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeFragment.glsl",
+              "RelativeDocumentMoniker": "LightingMaps\\Shaders\\CubeFragment.glsl",
+              "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Shaders\\CubeFragment.glsl",
+              "RelativeToolTip": "LightingMaps\\Shaders\\CubeFragment.glsl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-19T03:33:48.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Camera.cpp",
               "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Camera.cpp",
               "RelativeDocumentMoniker": "LightingMaps\\Camera.cpp",
@@ -42,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "glad.c",
               "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\glad.c",
               "RelativeDocumentMoniker": "LightingMaps\\glad.c",
@@ -54,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Camera.h",
               "DocumentMoniker": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\Camera.h",
               "RelativeDocumentMoniker": "LightingMaps\\Camera.h",
@@ -62,8 +130,7 @@
               "RelativeToolTip": "LightingMaps\\Camera.h",
               "ViewState": "AgIAABgAAAAAAAAAAAAAADMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-19T02:21:57.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-19T02:21:57.679Z"
             },
             {
               "$type": "Document",
@@ -73,7 +140,7 @@
               "RelativeDocumentMoniker": "LightingMaps\\main.cpp",
               "ToolTip": "C:\\Users\\Canyon\\ProgrammingProjects\\Graphics\\OpenGL\\OpenGLSections\\Lighting\\LightingMaps\\LightingMaps\\main.cpp",
               "RelativeToolTip": "LightingMaps\\main.cpp",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBgAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADkAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-19T01:57:34.577Z",
               "EditorCaption": ""

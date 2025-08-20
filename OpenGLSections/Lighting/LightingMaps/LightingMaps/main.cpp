@@ -37,6 +37,12 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 /// <param name="window">window to take input from</param>
 void ProcessInput(GLFWwindow* window);
 
+/// <summary>
+/// Generates a preset 2D texture buffer with a valid image path passed in
+/// </summary>
+/// <param name="texturePath"> Path to the texture/image in the project
+unsigned int GenerateTextureBuffer(const char* texturePath);
+
 
 int main()
 {
@@ -46,16 +52,14 @@ int main()
     Shader lightSourceShader = Shader("Shaders//LightSourceVertex.glsl", "Shaders//LightSourceFragment.glsl");
 
     // Cursor callback
-    auto cursorLambda = [](GLFWwindow* window, double xPos, double yPos) {
+    glfwSetCursorPosCallback(window, [](GLFWwindow* window, double xPos, double yPos) {
         mainCamera.RotateCameraInput(window, xPos, yPos);
-        };
-    glfwSetCursorPosCallback(window, cursorLambda);
+        });
 
     // scroll callback
-    auto scrollLambda = [](GLFWwindow* window, double xOffset, double yOffset) {
+    glfwSetScrollCallback(window, [](GLFWwindow* window, double xOffset, double yOffset) {
         mainCamera.ZoomCameraInput(window, xOffset, yOffset);
-        };
-    glfwSetScrollCallback(window, scrollLambda);
+        });
 
     // lock cursor
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -128,6 +132,12 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
+    unsigned int containerTextureBuffer = GenerateTextureBuffer("Textures//container2.png");
+    
+
+    cubeShader.Use();
+    cubeShader.setInt("material.diffuse", 0);
+
     glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window))
     {
@@ -148,8 +158,8 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         //Rotate light source horizontally
-        lightPos.x = glm::cos(glfwGetTime()) * 2.0f;
-        lightPos.z = glm::sin(glfwGetTime()) * 2.0f;
+        /*lightPos.x = glm::cos(glfwGetTime()) * 2.0f;
+        lightPos.z = glm::sin(glfwGetTime()) * 2.0f;*/
 
         // cube
         glm::vec3 camPos = mainCamera.GetCameraPosition();
@@ -157,6 +167,8 @@ int main()
         cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         cubeShader.setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
+        cubeShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        cubeShader.setFloat("material.shininess", 150.0f);
 
         mainCamera.GenerateProjectionMatrix(WINDOW_WIDTH, WINDOW_HEIGHT, 0.1f, 100.0f);
         int cubeProj = glGetUniformLocation(cubeShader.ID, "proj");
@@ -173,6 +185,9 @@ int main()
         // create normal cube matrix from view perspective
         glm::mat3 normalCubeMatrix = glm::transpose(glm::inverse(mainCamera.GetViewMatrix() * model));
         cubeShader.setMat3("normalMatrix", glm::value_ptr(normalCubeMatrix));
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, containerTextureBuffer);
 
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -238,4 +253,35 @@ void ProcessInput(GLFWwindow* window)
     {
         mainCamera.ProcessInput(GLFW_KEY_A);
     }
+}
+
+unsigned int GenerateTextureBuffer(const char* texturePath)
+{
+    unsigned int textureBuffer;
+    glGenTextures(1, &textureBuffer);
+
+    int containerWidth, containerHeight, containerNrChannels;
+    unsigned char* containerData = stbi_load(texturePath, &containerWidth, &containerHeight, &containerNrChannels, 0);
+    if (containerData)
+    {
+        glBindTexture(GL_TEXTURE_2D, textureBuffer);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, containerWidth, containerHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, containerData);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+        stbi_image_free(containerData);
+        glDeleteBuffers(1, &textureBuffer);
+        return -1;
+    }
+    stbi_image_free(containerData);
+
+
+    return textureBuffer;
 }
