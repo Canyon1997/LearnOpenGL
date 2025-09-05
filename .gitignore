@@ -26,6 +26,11 @@
 *.a
 *.lib
 
+# Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
 # Executables
 x64/
 .vs/
