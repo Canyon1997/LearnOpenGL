@@ -101,6 +101,19 @@ int main()
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
 
+    glm::vec3 cubePositions[] = {
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3(2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3(1.3f, -2.0f, -2.5f),
+        glm::vec3(1.5f,  2.0f, -2.5f),
+        glm::vec3(1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+
     unsigned int cubeVBO;
     unsigned int cubeVAO;
     glGenBuffers(1, &cubeVBO);
@@ -125,13 +138,10 @@ int main()
 
     unsigned int containerDiffuseTextureBuffer = OpenGLHelpers::Generate2DTextureBuffer("Textures//container2.png");
     unsigned int containerSpecularTextureBuffer = OpenGLHelpers::Generate2DTextureBuffer("Textures//container2_specular.png");
-    unsigned int containerEmissionTextureBuffer = OpenGLHelpers::Generate2DTextureBuffer("Textures//matrix.jpg");
-
 
     cubeShader.Use();
     cubeShader.setInt("material.diffuse", 0);
     cubeShader.setInt("material.specular", 1);
-    cubeShader.setInt("material.emission", 2);
 
     glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window))
@@ -156,15 +166,7 @@ int main()
         glm::vec3 camPos = mainCamera.GetCameraPosition();
         cubeShader.Use();
 
-        // set light struct uniform
-        cubeShader.setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
-        cubeShader.setVec3("light.ambient", 1.0f, 1.0f, 1.0f);
-        cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-        cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
-        // set material struct uniform
-        cubeShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
-        cubeShader.setFloat("material.shininess", 150.0f);
 
         mainCamera.GenerateProjectionMatrix(WINDOW_WIDTH, WINDOW_HEIGHT, 0.1f, 100.0f);
         int cubeProj = glGetUniformLocation(cubeShader.ID, "proj");
@@ -174,13 +176,17 @@ int main()
         int cubeView = glGetUniformLocation(cubeShader.ID, "view");
         glUniformMatrix4fv(cubeView, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
 
-        glm::mat4 model = glm::mat4(1.0f);
-        int cubeModel = glGetUniformLocation(cubeShader.ID, "model");
-        glUniformMatrix4fv(cubeModel, 1, GL_FALSE, glm::value_ptr(model));
+        // set light struct uniform
+        // get light pos in view coordinates for frag shader
+        glm::vec3 viewLightDir = glm::mat3(mainCamera.GetViewMatrix()) * glm::vec3(-0.2f, -1.0f, -0.3f);
+        cubeShader.setVec3("light.direction", viewLightDir.x, viewLightDir.y, viewLightDir.z);
 
-        // create normal cube matrix from view perspective
-        glm::mat3 normalCubeMatrix = glm::transpose(glm::inverse(mainCamera.GetViewMatrix() * model));
-        cubeShader.setMat3("normalMatrix", glm::value_ptr(normalCubeMatrix));
+        cubeShader.setVec3("light.ambient", 0.1f, 0.1f, 0.1f);
+        cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+        // set material struct uniform
+        cubeShader.setFloat("material.shininess", 150.0f);
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, containerDiffuseTextureBuffer);
@@ -188,11 +194,24 @@ int main()
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, containerSpecularTextureBuffer);
 
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, containerEmissionTextureBuffer);
+        for (size_t i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            
 
-        glBindVertexArray(cubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+            // create normal cube matrix from view perspective
+            glm::mat3 normalCubeMatrix = glm::transpose(glm::inverse(mainCamera.GetViewMatrix() * model));
+            cubeShader.setMat3("normalMatrix", glm::value_ptr(normalCubeMatrix));
+
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            int cubeModel = glGetUniformLocation(cubeShader.ID, "model");
+            glUniformMatrix4fv(cubeModel, 1, GL_FALSE, glm::value_ptr(model));
+
+            glBindVertexArray(cubeVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
 
         //light source
@@ -204,12 +223,13 @@ int main()
         int lightView = glGetUniformLocation(lightSourceShader.ID, "view");
         glUniformMatrix4fv(lightView, 1, GL_FALSE, glm::value_ptr(mainCamera.GetViewMatrix()));
 
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f));
+        glm::mat4 lightModel = glm::mat4(1.0f);
+        lightModel = glm::mat4(1.0f);
+        lightModel = glm::translate(lightModel, lightPos);
+        lightModel = glm::scale(lightModel, glm::vec3(0.2f));
 
-        int lightModel = glGetUniformLocation(lightSourceShader.ID, "model");
-        glUniformMatrix4fv(lightModel, 1, GL_FALSE, glm::value_ptr(model));
+        int lightModelUniform = glGetUniformLocation(lightSourceShader.ID, "model");
+        glUniformMatrix4fv(lightModelUniform, 1, GL_FALSE, glm::value_ptr(lightModel));
 
         glBindVertexArray(lightSourceVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
