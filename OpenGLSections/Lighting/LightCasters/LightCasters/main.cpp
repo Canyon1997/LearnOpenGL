@@ -163,10 +163,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // cube
-        glm::vec3 camPos = mainCamera.GetCameraPosition();
         cubeShader.Use();
-
-
 
         mainCamera.GenerateProjectionMatrix(WINDOW_WIDTH, WINDOW_HEIGHT, 0.1f, 100.0f);
         int cubeProj = glGetUniformLocation(cubeShader.ID, "proj");
