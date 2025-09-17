@@ -175,12 +175,15 @@ int main()
 
         // set light struct uniform
         // get light pos in view coordinates for frag shader
-        glm::vec3 viewLightDir = glm::mat3(mainCamera.GetViewMatrix()) * glm::vec3(-0.2f, -1.0f, -0.3f);
-        cubeShader.setVec3("light.direction", viewLightDir.x, viewLightDir.y, viewLightDir.z);
+        glm::vec3 viewLightPos = glm::vec3(mainCamera.GetViewMatrix() * glm::vec4(lightPos, 1.0f));
+        cubeShader.setVec3("light.position", viewLightPos.x, viewLightPos.y, viewLightPos.z);
 
         cubeShader.setVec3("light.ambient", 0.1f, 0.1f, 0.1f);
         cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        cubeShader.setFloat("light.constant", 1.0f);
+        cubeShader.setFloat("light.linear", 0.09f);
+        cubeShader.setFloat("light.quadratic", 0.032f);
 
         // set material struct uniform
         cubeShader.setFloat("material.shininess", 150.0f);
