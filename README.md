@@ -2,4 +2,4 @@
 This repository contains all the different lessons from each section of learn open gl to track my progression of learning computer graphics
 
 # PersonalNote
-I decided to merge everything into one giant project as I didn't think about it before. The learning process of my computer graphics journey started in mid July up till now, learning almost every day. Because I merged the projects into one, my commit history has been deleted.
+This repository is DEPRECATED. I am restarting LearnOpenGL because of the year I had working on my masters in computer science. I have been away for quite some time and feel it is best to restart LearnOpenGL to really grasp the fundamentals. This will all be contained in a different repository.
