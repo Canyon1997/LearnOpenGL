@@ -31,6 +31,10 @@
 *.vcxproj.filters
 *.vcxproj.user
 
+# Jetbrains IDE files
+*.slnx
+.idea/
+
 # Executables
 x64/
 .vs/
