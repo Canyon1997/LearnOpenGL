@@ -1,5 +1,7 @@
-# LearnOpenGL
-This repository contains all the different lessons from each section of learn open gl to track my progression of learning computer graphics
+# About
+Welcome to DaGrandRenderer! This is my first renderer created using openGL. Build instructions are below so you can run the project. Thank you very much for looking into this project, I hope you enjoy!
 
-# PersonalNote
-This repository is DEPRECATED. I am restarting LearnOpenGL because of the year I had working on my masters in computer science. I have been away for quite some time and feel it is best to restart LearnOpenGL to really grasp the fundamentals. This will all be contained in a different repository.
+# How To Build
+* This renderer uses openGL 3.3
+* There are a number of 3rd party dependencies that will need to be built in order to use this project. All of the source files for each library are organized in the 'External' directory.
+* The 'build' folder in the root directory has a number of directories within it to place your build files organized by library name. I used cmake to build each library and place the build location in each of the matching folders.
