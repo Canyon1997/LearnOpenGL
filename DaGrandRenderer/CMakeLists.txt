@@ -3,6 +3,8 @@ project(DaGrandRenderer)
 
 set(CMAKE_CXX_STANDARD 17)
 
+find_package(OpenGL REQUIRED)
+
 add_executable(DaGrandRenderer DaGrandRenderer/Source/main.cpp)
 
 target_include_directories(DaGrandRenderer
@@ -13,7 +15,8 @@ target_include_directories(DaGrandRenderer
 
 target_link_libraries(DaGrandRenderer
 		PRIVATE
-		${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/Debug/SDL3.lib
+		${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/$<CONFIG>/SDL3.lib
+		OpenGL::GL
 )
 
 add_custom_command(TARGET DaGrandRenderer POST_BUILD
