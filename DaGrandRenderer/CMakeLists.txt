@@ -5,12 +5,16 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(OpenGL REQUIRED)
 
-add_executable(DaGrandRenderer DaGrandRenderer/Source/main.cpp)
+add_executable(DaGrandRenderer
+		DaGrandRenderer/Source/main.cpp
+		External/glad/src/glad.c
+)
 
 target_include_directories(DaGrandRenderer
 		PRIVATE
 		${CMAKE_SOURCE_DIR}/External/SDL-release-3.4.0/include
 		${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/include-config-debug/build_config
+		${CMAKE_SOURCE_DIR}/External/glad/include
 )
 
 target_link_libraries(DaGrandRenderer
