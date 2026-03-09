@@ -12,19 +12,15 @@ add_executable(DaGrandRenderer
 
 target_include_directories(DaGrandRenderer
 		PRIVATE
-		${CMAKE_SOURCE_DIR}/External/SDL-release-3.4.0/include
-		${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/include-config-debug/build_config
 		${CMAKE_SOURCE_DIR}/External/glad/include
+		${CMAKE_SOURCE_DIR}/External/glfw/include
 )
 
 target_link_libraries(DaGrandRenderer
 		PRIVATE
-		${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/$<CONFIG>/SDL3.lib
+		${CMAKE_SOURCE_DIR}/External/glfw/lib/glfw3.lib
 		OpenGL::GL
-)
-
-add_custom_command(TARGET DaGrandRenderer POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-	    ${CMAKE_SOURCE_DIR}/build/SDL_3.4.0_build/Debug/SDL3.dll
-	    $<TARGET_FILE_DIR:DaGrandRenderer>
+		gdi32
+		user32
+		shell32
 )
