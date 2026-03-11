@@ -20,7 +20,4 @@ target_link_libraries(DaGrandRenderer
 		PRIVATE
 		${CMAKE_SOURCE_DIR}/External/glfw/lib/glfw3.lib
 		OpenGL::GL
-		gdi32
-		user32
-		shell32
 )
