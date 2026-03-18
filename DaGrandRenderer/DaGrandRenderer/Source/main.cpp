@@ -7,9 +7,6 @@
 constexpr int WINDOW_WIDTH = 800;
 constexpr int WINDOW_HEIGHT = 600;
 
-// vertex buffer object
-using VBO = unsigned int;
-
 // init functions
 bool initGlfw();
 bool initGlad();
@@ -56,16 +53,53 @@ int main(int argc, char* argv[])
     "}\0";
     unsigned int fragmentShader;
 
-    float objVertexData[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f, 0.5f, 0.0f
+    const char *fragmentShaderYellowSource = "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = vec4(1.0f, 1.0f, 0.0f, 1.0f);\n"
+    "}\0";
+    unsigned int fragmentYellowShader;
+
+    float objVertexData1[] = {
+        -1.0f, 0.0f, 0.0f,
+        -0.5f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f
     };
 
-    VBO buf;
-    glGenBuffers(1, &buf);
-    glBindBuffer(GL_ARRAY_BUFFER, buf);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(objVertexData), objVertexData, GL_STATIC_DRAW);
+    float objVertexData2[] = {
+        0.0f, 0.0f, 0.0f,
+        0.5f, 1.0f, 0.0f,
+        1.0f, 0.0f, 0.0f
+    };
+
+    unsigned int objectIndices[] = {
+        0, 1, 3,   // first triangle
+        1, 2, 3    // second triangle
+    };
+
+    unsigned int VBO1;
+    unsigned int VAO1;
+
+    glGenBuffers(1, &VBO1);
+    glGenVertexArrays(1, &VAO1);
+    glBindVertexArray(VAO1);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO1);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(objVertexData1), objVertexData1, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    unsigned int VBO2;
+    unsigned int VAO2;
+    glGenBuffers(1, &VBO2);
+    glGenVertexArrays(1, &VAO2);
+    glBindVertexArray(VAO2);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(objVertexData2), objVertexData2, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
 
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
@@ -91,6 +125,17 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    fragmentYellowShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentYellowShader, 1, &fragmentShaderYellowSource, nullptr);
+    glCompileShader(fragmentYellowShader);
+    glGetShaderiv(fragmentYellowShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        glGetShaderInfoLog(fragmentYellowShader, 512, nullptr, infoLog);
+        std::cout << "Error, fragment shader failed to compile\n" << infoLog << std::endl;
+        return -1;
+    }
+
     unsigned int shaderProgram;
     shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
@@ -104,9 +149,22 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    glUseProgram(shaderProgram);
+    unsigned int shaderYellowProgram;
+    shaderYellowProgram = glCreateProgram();
+    glAttachShader(shaderYellowProgram, vertexShader);
+    glAttachShader(shaderYellowProgram, fragmentYellowShader);
+    glLinkProgram(shaderYellowProgram);
+    glGetProgramiv(shaderYellowProgram, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        glGetProgramInfoLog(shaderYellowProgram, 512, nullptr, infoLog);
+        std::cout << "Error, shader program failed to compile\n" << infoLog << std::endl;
+        return -1;
+    }
+
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+    glDeleteShader(fragmentYellowShader);
 
     while (!glfwWindowShouldClose(mainWindow))
     {
@@ -116,6 +174,14 @@ int main(int argc, char* argv[])
         // render
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glUseProgram(shaderProgram);
+        glBindVertexArray(VAO1);
+        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glUseProgram(shaderYellowProgram);
+        glBindVertexArray(VAO2);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // check/call events, swap buffers, etc.
         glfwSwapBuffers(mainWindow);

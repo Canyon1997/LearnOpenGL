@@ -8,6 +8,7 @@ find_package(OpenGL REQUIRED)
 add_executable(DaGrandRenderer
 		DaGrandRenderer/Source/main.cpp
 		External/glad/src/glad.c
+		DaGrandRenderer/Header/ShaderHelperLibrary.h
 )
 
 target_include_directories(DaGrandRenderer
