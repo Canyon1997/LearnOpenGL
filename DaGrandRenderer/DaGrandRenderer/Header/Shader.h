@@ -13,20 +13,20 @@
 
 
 
-class ShaderHelperLibrary
+class Shader
 {
-    /// Generates a shader when provided with a path to source vertex and source fragment glsl files.
-    static unsigned int GenerateShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
-};
+private:
+    unsigned int shaderProgram = -1;
 
-inline unsigned int ShaderHelperLibrary::GenerateShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
-{
-    std::ifstream vertexFile(vertexShaderPath);
+public:
+    Shader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath)
+    {
+        std::ifstream vertexFile(vertexShaderPath);
     if (vertexFile.fail())
     {
         std::cout << "Failed to find vertex shader path: " << vertexShaderPath << ". Can't make the shader object" << std::endl;
         vertexFile.close();
-        return -1;
+        return;
     }
 
     std::ifstream fragmentFile(fragmentShaderPath);
@@ -34,7 +34,7 @@ inline unsigned int ShaderHelperLibrary::GenerateShader(const std::string& verte
     {
         std::cout << "Failed to find fragment shader path: " << fragmentShaderPath << ". Can't make the shader object" << std::endl;
         fragmentFile.close();
-        return -1;
+        return;
     }
 
     std::stringstream vertexBuf;
@@ -58,7 +58,7 @@ inline unsigned int ShaderHelperLibrary::GenerateShader(const std::string& verte
     {
         glGetShaderInfoLog(vertex, 512, nullptr, infoLog);
         std::cout << "Error, vertex shader failed to compile\n" << infoLog << std::endl;
-        return -1;
+        return;
     }
 
     unsigned int fragment;
@@ -68,12 +68,12 @@ inline unsigned int ShaderHelperLibrary::GenerateShader(const std::string& verte
     glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
     if (!success)
     {
-        glGetShaderInfoLog(vertex, 512, nullptr, infoLog);
+        glGetShaderInfoLog(fragment, 512, nullptr, infoLog);
         std::cout << "Error, fragment shader failed to compile\n" << infoLog << std::endl;
-        return -1;
+        return;
     }
 
-    unsigned int shaderProgram;
+
     shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertex);
     glAttachShader(shaderProgram, fragment);
@@ -83,14 +83,13 @@ inline unsigned int ShaderHelperLibrary::GenerateShader(const std::string& verte
     {
         glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
         std::cout << "Error, shader program failed to compile\n" << infoLog << std::endl;
-        return -1;
+        return;
     }
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);
+    }
 
-    return shaderProgram;
-}
-
+};
 
 #endif //DAGRANDRENDERER_SHADER_H
